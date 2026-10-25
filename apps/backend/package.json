@@ -1,12 +1,26 @@
 {
   "name": "backend",
+  "version": "0.0.0",
   "module": "index.ts",
   "type": "module",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "dev": "bun --watch index.ts",
+    "start": "bun index.ts",
+    "check-types": "tsc --noEmit"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "dependencies": {
+    "@repo/db": "*",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.14",
+    "typescript": "7.0.2"
   }
 }
