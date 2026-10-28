@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
 import http from "http";
-import { WebSocketServer, WebSocket } from "ws";
+import  { WebSocketServer, WebSocket } from "ws";
 import { prisma } from "@repo/db";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors());
@@ -47,27 +47,47 @@ wss.on("connection", (ws: WebSocket) => {
   console.log("Client connected via WebSocket");
 
   ws.send(JSON.stringify({ type: "WELCOME", message: "Connected to Docs Realtime Server" }));
+  console.log("Sending welcome message to client");
 
   ws.on("message", (data) => {
     try {
+      // console.log("Received WS message:", data);
       const message = JSON.parse(data.toString());
       console.log("Received WS message:", message);
 
-      // Echo / broadcast message back to clients
-      wss.clients.forEach((client) => {
-        if (client !== ws && client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify(message));
-        }
-      });
-    } catch (err) {
-      console.error("Invalid WS message format", err);
+
+      if (message.type === "sendContent") {
+        console.log("Received setDocs message:", message);
+        wss.clients.forEach((client) => {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({ type: "setDocs", content: message.content }));
+          }
+        });
+      }
+      // Here you can handle the setDocs message, e.g., save to database or broadcast to other clients
     }
-  });
+
+      // Echo / broadcast message back to clients
+      // wss.clients.forEach((client) => {
+      //   if (client !== ws && client.readyState === WebSocket.OPEN) {
+      //     client.send(JSON.stringify(message));
+      //   }
+      // });
+    // }
+     catch (err) {
+    console.error("Invalid WS message format", err);
+  }
+
+
 
   ws.on("close", () => {
-    console.log("Client disconnected");
-  });
+  console.log("Client disconnected");
 });
+});
+})
+
+
+  
 
 server.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
