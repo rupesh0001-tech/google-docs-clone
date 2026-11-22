@@ -75,3 +75,24 @@ button {
   border: 0;
 }
 
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero__line > span {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .collab-doc [class*="animate-"] {
+    animation: none !important;
+  }
+}
+

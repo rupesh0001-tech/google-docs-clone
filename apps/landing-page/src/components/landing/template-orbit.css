@@ -26,7 +26,13 @@
   color: transparent;
 }
 
-.hero__line:nth-child(2) > span {
+.hero__line-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: heroRise 0.9s var(--out) forwards;
+}
+
+.hero__line:nth-child(2) .hero__line-inner {
   animation-delay: 0.1s;
 }
 

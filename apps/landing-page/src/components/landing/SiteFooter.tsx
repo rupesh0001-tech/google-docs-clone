@@ -23,7 +23,7 @@ export function SiteFooter() {
       </Container>
 
       <Container className="mt-10 flex flex-col gap-2 border-t border-[var(--line)] pt-6 text-[13px] text-[var(--mute)] sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} Docify. All rights reserved.</p>
+        <p>© 2026 Docify. All rights reserved.</p>
         <p>Built for teams who write together.</p>
       </Container>
     </footer>

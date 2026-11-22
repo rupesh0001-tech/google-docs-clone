@@ -78,7 +78,8 @@ export function TemplatesSection() {
           {selected ? (
             <aside className="sticky top-24 rounded-[24px] border border-[var(--line)] bg-[var(--paper)] p-6 shadow-[var(--shadow)]">
               <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--mute)]">
-                {selected.category} · {selected.pages} pages
+                {selected.category} · {selected.pages}{" "}
+                {selected.pages === 1 ? "page" : "pages"}
               </p>
               <h3 className="mt-2 font-[family-name:var(--font-display)] text-[1.75rem] font-semibold tracking-[-0.03em]">
                 {selected.title}

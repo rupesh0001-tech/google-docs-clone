@@ -19,9 +19,7 @@ export function Hero() {
         <h1 className="mt-5 max-w-[18ch] font-[family-name:var(--font-display)] text-[clamp(1.9rem,4.4vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--ink)]">
           {HERO.headline.map((line) => (
             <span key={line} className="hero__line block overflow-hidden">
-              <span className="inline-block animate-[heroRise_0.9s_var(--out)_forwards] translate-y-[110%]">
-                {line}
-              </span>
+              <span className="hero__line-inner">{line}</span>
             </span>
           ))}
         </h1>
