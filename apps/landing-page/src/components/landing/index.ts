@@ -1,4 +1,10 @@
+export { AiSection } from "./AiSection";
+export { CollabSection } from "./CollabSection";
+export { CtaBanner } from "./CtaBanner";
+export { FeaturesGrid } from "./FeaturesGrid";
 export { Hero } from "./Hero";
+export { SiteFooter } from "./SiteFooter";
 export { SiteHeader } from "./SiteHeader";
 export { TemplateCard } from "./TemplateCard";
 export { TemplateOrbit } from "./TemplateOrbit";
+export { TemplatesSection } from "./TemplatesSection";
